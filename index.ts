@@ -31,9 +31,40 @@ const crearLibro = async (data: { titulo: string; autor: string; anio: number; g
   }
 };
 
-crearLibro({
-  titulo: "Crónica de una muerte anunciada",
-  autor: "Gabriel García Márquez",
-  anio: 1981,
-  genero: "Novela corta"
-})
+const obtenerLibros = async () => {
+  try {
+    const libros = await Libro.find({}, {_id: 0});
+    console.log("📚 Libros encontrados:", libros);
+  }
+  catch (error) {
+    console.error("Error al obtener los libros:", error);
+  }
+};
+
+const obtenerLibroPorId = async (id: string) => {
+  try {
+    const libro = await Libro.findById(id, {_id: 0});
+    if (libro) {
+      console.log("📖 Libro encontrado:", libro);
+    } else {
+      console.log("Libro no encontrado");
+    }
+  }
+  catch (error) {
+    console.error("Error al obtener el libro:", error);
+  }
+};
+
+
+//--- Testeo de funciones --- Descomentar para probar ---//
+
+//obtenerLibros()
+
+//obtenerLibroPorId("67ff2352c44a5ebec7d2e43a")
+
+// crearLibro({
+//   titulo: "Crónica de una muerte anunciada",
+//   autor: "Gabriel García Márquez",
+//   anio: 1981,
+//   genero: "Novela corta"
+// })

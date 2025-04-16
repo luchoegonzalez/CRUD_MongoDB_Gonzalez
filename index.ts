@@ -1,1 +1,3 @@
-console.log("hola mundo")
+import { connectDB } from "./config/mongo";
+
+connectDB()

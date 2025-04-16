@@ -55,12 +55,34 @@ const obtenerLibroPorId = async (id: string) => {
   }
 };
 
+const actualizarLibro = async (id: string, data: { titulo?: string; autor?: string; anio?: number; genero?: string }) => {
+  try {
+    const libroActualizado = await Libro.findByIdAndUpdate(id, data, { new: true });
+    if(!libroActualizado) {
+      console.log("Libro no encontrado para actualizar");
+    } else {
+      console.log("📖 Libro actualizado:", libroActualizado);
+    }
+  } catch (error) {
+    console.error("Error al actualizar el libro:", error);
+  }
+}
+
+const eliminarLibro = async (id: string) => {
+  try {
+    const libroEliminado = await Libro.findByIdAndDelete(id);
+    if (!libroEliminado) {
+      console.log("Libro no encontrado para eliminar");
+    } else {
+      console.log("🗑️ Libro eliminado:", libroEliminado);
+    }
+  }
+  catch (error) {
+    console.error("Error al eliminar el libro:", error);
+  }
+};
 
 //--- Testeo de funciones --- Descomentar para probar ---//
-
-//obtenerLibros()
-
-//obtenerLibroPorId("67ff2352c44a5ebec7d2e43a")
 
 // crearLibro({
 //   titulo: "Crónica de una muerte anunciada",
@@ -68,3 +90,11 @@ const obtenerLibroPorId = async (id: string) => {
 //   anio: 1981,
 //   genero: "Novela corta"
 // })
+
+//obtenerLibros()
+
+//obtenerLibroPorId("67ff2352c44a5ebec7d2e43a")
+
+//actualizarLibro("67ff2352c44a5ebec7d2e43a", {anio: 1900, genero: "Cyber Punk"})
+
+//eliminarLibro("67ff2352c44a5ebec7d2e43a")

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 process.loadEnvFile()
 
-const URI_DB: string = process.env.URI_DB || "mongodb://localhost:27017"
+const URI_DB: string = process.env.URI_DB || "mongodb://localhost:27017/utn-backend"
 
 export async function connectDB () {
   try {

@@ -20,3 +20,20 @@ const libroSchema: Schema = new Schema<LibroInterface>({
 libroSchema.set("strict", true)
 
 const Libro = mongoose.model<LibroInterface>("libro", libroSchema)
+
+const crearLibro = async (data: { titulo: string; autor: string; anio: number; genero: string }) => {
+  try{
+    const libro: LibroInterface = new Libro(data);
+    await libro.save();
+    console.log("📘 Libro creado:", libro);
+  } catch (error) {
+    console.error("Error al crear el libro:", error);
+  }
+};
+
+crearLibro({
+  titulo: "Crónica de una muerte anunciada",
+  autor: "Gabriel García Márquez",
+  anio: 1981,
+  genero: "Novela corta"
+})

@@ -151,6 +151,14 @@ Elimina un libro por su ID.
 
 Este proyecto incluye un CLI para interactuar fácilmente con el sistema de libros desde la terminal.
 
+### ⚠️ Requisitos previos
+
+Antes de ejecutar cualquier comando del CLI, asegurate de compilar el proyecto con:
+
+`npm run build` 
+
+Esto generará los archivos en la carpeta `dist/`, que está ignorada en el repositorio (`.gitignore`), pero es necesaria para que el CLI funcione.
+
 ### ▶️ Uso general
 
 ```bash
